@@ -7,6 +7,7 @@ session_start();
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link type="text/css" href="main.css" rel="stylesheet" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -64,6 +65,72 @@ session_start();
                 </form>
             </div>
         </header>
-        
+        <main>
+            <section class="main-section">
+                <div class="product-container">  <!-- tak wiem strasznie duzo tych divów -->
+                    <div class="products">
+                        <!-- produkt1-->
+                        <div class="product">    
+                            <div class="product-under">
+                                <figure class="product-image">
+                                    <!-- tu można dodac zdjecie-->
+                                    <div class="product-over">
+                                        <!-- jak sie doda zdjecie to te przyciski powinny byc jakby na zdjeciu,
+                                        fajnie by bylo jak sie najedzie na zdjecie to sie pokazuje przycisk "dodaj do koszyka"-->
+                                        <button
+                                            class="btn btn-small addToCart"
+                                            data-product-id="1"
+                                        >
+                                            <i class="fas fa-cart-plus"></i>Dodaj do koszyka
+                                        </button>
+                                    </div>
+                                </figure>
+                                <div class="product-summary">
+                                    <h4 class="productName">Produkt 1</h4>
+                                    <h6 class="price">
+                                        <span class="priceValue">15</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- koniec produktu1-->
+                        <!-- produkt2-->
+                        <div class="product">
+                            <div class="product-under">
+                                <figure class="product-image">
+                                    <!--zdjecie-->
+                                    <div class="product-over">
+                                        <button
+                                            class="btn btn-small addToCart"
+                                            data-product-id="2"
+                                        >
+                                            <i class="fas fa-cart-plus"></i>Dodaj do koszyka
+                                        </button>
+                                    </div>
+                                </figure>
+                                <div class="product-summary">
+                                    <h4 class="productName">Produkt 2</h4>
+                                    <h6 class="price">
+                                        <span class="priceValue">20</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </section>
+            <div class="podsumowanie hide"> 
+                <div class="overlay"></div>
+                <div class="top">
+                    <h3>Koszyk</h3>
+                </div>
+                <ul id="podsumowanie">
+                    <h4 class="empti">koszyk jest pusty</h4>
+                </ul>
+                <div style="display: none" id="suma">Suma:</div><h6 id="sum-all-prices"></h6>
+            </div>
+        </main>
+        <script src="script.js"></script>
+        <script src="shopping-cart.js"></script>
     </body>
 </html>
