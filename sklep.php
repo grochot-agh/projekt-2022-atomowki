@@ -3,7 +3,6 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<!-- a to jest html a nie php teraz ogarnelam ze byl php ale juz to wrzuce tak-->
 <html lang="sv">
     <head>
         <meta charset="UTF-8" />
