@@ -16,9 +16,10 @@
             integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
             crossorigin="anonymous"
         />
-        <script src="JS/jquery-3.5.1.min.js"></script>
-        <script src="JS/multislider.min.js"></script>
-        <title>ProjekcikGrochocika</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="multislider.min.js"></script>
+        <title>Sklep</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     </head>
     <!--header-->
