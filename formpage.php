@@ -20,7 +20,7 @@
 <html lang="pl">
     <head>
         <meta charset="UTF-8" />
-        <title>ProjekcikGrochocika</title>
+        <title>Sklep</title>
         <script src="code.js"></script>
         <link rel="stylesheet" href="style.css" type="text/css">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
