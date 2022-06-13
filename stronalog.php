@@ -22,8 +22,9 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==1))
         <link type="text/css" href="stylelog.css" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+	    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         
-        <title></title>
+        <title>Sklep</title>
     </head>
 
     <body>
@@ -74,6 +75,5 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==1))
 
         <script src="script.js"></script>
         <script src="shopping-cart.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     </body>
 </html>
