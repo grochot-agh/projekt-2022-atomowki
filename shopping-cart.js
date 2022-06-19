@@ -5,8 +5,8 @@ if(!productsInCart){
 const parentElement = document.querySelector('#buyItems');
 const cartSumPrice = document.querySelector('#sum-prices');
 const products = document.querySelectorAll('.product-under');
-const cartAllSumPrice = document.querySelector('#sum-all-prices');  
-const podsumowanie = document.querySelector('#podsumowanie');
+const cartAllSumPrice = document.querySelector('#sum-all-prices');  //aneta
+const summaryCartAllSumPrice = document.querySelector('#summary_sum-all-prices')
     
 
 const countTheSumPrice = function () { // 4
@@ -36,9 +36,12 @@ const updateShoppingCartHTML = function () {  // 3
 			//wyseitlenie tego produktu w koszyku
 			return `
 				<li class="buyItem">
+					
+					<img src="${product.image}" width="60" 
+					height="60">
 					<div>
 						<h5>${product.name}</h5>
-						<h6>$${product.price}</h6>
+						<h6>${product.price}pln</h6>
 						<div>
 							<button class="button-minus" data-id=${product.id}>-</button>
 							<span class="countOfProduct">${product.count}</span>
@@ -50,14 +53,17 @@ const updateShoppingCartHTML = function () {  // 3
 		parentElement.innerHTML = result.join('');
 		podsumowanie.innerHTML = result.join('');
 		$('.checkout').css('display', 'block');
-		cartSumPrice.innerHTML = '$' + countTheSumPrice();
-		//cartAllSumPrice.innerHTML = 'Suma: $' + sumaZamowienia();  
-		cartAllSumPrice.innerHTML = sumaZamowienia(); 
+		//document.querySelector('.checkout').classList.remove('hidden');
+		cartSumPrice.innerHTML = countTheSumPrice() + 'pln' ;
+		cartAllSumPrice.innerHTML = 'Suma: ' + sumaZamowienia() + 'pln';
+		summaryCartAllSumPrice.innerHTML = 'Suma: ' + sumaZamowienia() + 'pln';
+		//cartAllSumPrice.innerHTML = sumaZamowienia(); 
 
 	}
 	//kesli nie ma produktow
 	else {
 		$('.checkout').css('display', 'none');
+		//document.querySelector('.checkout').classList.add('hidden');
 		parentElement.innerHTML = '<h4 class="empty">Twój koszyk jest pusty</h4>';
 		podsumowanie.innerHTML = '<h4 class="empty">Twój koszyk jest pusty</h4>';
 		cartSumPrice.innerHTML = '';
@@ -76,7 +82,9 @@ function updateProductsInCart(product) { // 2
 			return;
 		}
 	}
-	productsInCart.push({...product}); 
+	//productsInCart.push(product);
+	productsInCart.push({...product}); //to zmieniłam,aneta
+	//console.log(JSON.stringify(productsInCart));
 	$.post("set_session.php", productsInCart, function (returnedData)    {
         console.log(returnedData); 
     });
@@ -90,13 +98,15 @@ products.forEach(item => {   // 1
 		if (e.target.classList.contains('addToCart')) {
 			//jesli tak to pobieramy wartosci produktu
 			const productID = e.target.dataset.productId;
-			const productName = item.querySelector('.productName').innerHTML; 
+			const productName = item.querySelector('.productName').innerHTML; //innerHTML zeby sie wyswietlilo to co pomiedzy <>
 			const productPrice = item.querySelector('.priceValue').innerHTML;
+			const productImage = item.querySelector('img').src;
 			let product = {
 				name: productName,
+				image: productImage,
 				id: productID,
 				count: 1,
-				price: +productPrice,
+				price: +productPrice, //productPrice jest stringiem, '+' konwertuje na int :)
 				basePrice: +productPrice,
 			}
 			updateProductsInCart(product);
@@ -105,7 +115,7 @@ products.forEach(item => {   // 1
 	});
 });
 
-parentElement.addEventListener('click', (e) => { // ostatnie
+parentElement.addEventListener('click', (e) => { // Last
 	const isPlusButton = e.target.classList.contains('button-plus');
 	const isMinusButton = e.target.classList.contains('button-minus');
 	if (isPlusButton || isMinusButton) {
@@ -133,6 +143,13 @@ function Convert() {
         console.log(returnedData); 
     });
 }
+
+
+
+//$(function () {
+  //$('.checkout').on('click', Convert); //to jakis syf
+//});
+
 
 
 updateShoppingCartHTML();

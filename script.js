@@ -65,3 +65,40 @@ window.onlick = function(event) {
 		modal.style.display = "none"; 
 	}
 }
+
+//obsluga formularza kontaktowego contactpage.php
+function printError(place,mess) {
+    document.getElementById(place).innerHTML = mess;
+}
+
+function printApproved(place,mess) {
+    document.getElementById(place).innerHTML = mess;
+}
+
+function validateForm() {
+    // Retrieving the values of form elements 
+    var email = document.contactForm.email.value;
+    var mobile = document.contactForm.mobile.value;
+	var message = document.contactForm.message.value;
+    
+    var Err = true;
+    
+    if(email == "" || mobile == "" || message ==""){
+		printError("error","Uzupełnij dane!");
+		printApproved("approved","");
+	}else {
+        	var regexEmail = /^\S+@\S+\.\S+$/;
+		var regexPhone = /^[1-9]\d/;
+        	if(regexEmail.test(email) === false || regexPhone.test(mobile) === false) {
+            		printError("error", "Uzupełnij poprawnie dane!");
+			printApproved("approved","");
+    		} else{
+			printApproved("approved","Twoja wiadomość została wysłana. Dziękujemy!");
+			printError("error","");
+		}
+	}
+
+	if(Err == true){
+		return false;
+	}
+};
