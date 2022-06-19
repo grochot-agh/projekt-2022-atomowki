@@ -7,7 +7,10 @@ session_start();
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link type="text/css" href="main.css" rel="stylesheet" />
+        <link type="text/css" href="stylesklep.css" rel="stylesheet" />
+        <link type="text/css" href="styleheader.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -21,24 +24,24 @@ session_start();
     </head>
 
     <body>
+        <div class="containerHeader">
         <!--header-->
-        <header class="header">
+        <header class="box">
             <button id="menuButton"><i class="fas fa-bars"></i></button>
             <!--Logo-->
-            <h2 class="logo"><a href="sklep.php">sklep</a></h2>
+            <h2 class="logo"><a href="sklep.php">candles&plants</a></h2>
             <nav class="links">
-                <a>podstrona1</a>
-                <a>podstrona2</a>
-                <a>podstrona3</a>
-            </nav>
-            <!--Moje konto, jak sie kilkie to przenosi do logowania oczywiscie tego jeszcze nie dodalam-->
-            <div class="icons">
-                <div class="account">
-                    <a href="stronalog.php">
-                    <button class="account-btn"> <i class="fas fa-user-alt" style="font-size:24px"></i></button>
-                    <span class="account-text">Moje konto</span> <!-- to sie nie wystwietla nie wiem czemu-->
-                    </a>
+            <div class="dropdown">
+                <a href="produkty.php">Produkty</a>
+                <div class="dropdown-content">
+                    <a href="swiece.php">Świece</a>
+                    <a href="rosliny.php">Rośliny</a>
                 </div>
+                </div>
+                <a href="contactpage.php">Kontakt</a>
+            </nav>
+            <!--Moje konto -->
+            <div class="icons">
                 <!-- koszyk-->
                 <div class="shopping-cart">
                     <div class="sum-prices">
@@ -48,7 +51,6 @@ session_start();
                     <h6 id="sum-prices"></h6>
                 </div>
             </div>
-            <!-- Tu można dodać szukanie na stronie, jak klikniesz pojawi się pole do wpisania -->
             <div class="producstOnCart hide"> 
                 <div class="overlay"></div>
                 <div class="top">
@@ -60,24 +62,31 @@ session_start();
                 <ul id="buyItems">
                     <h4 class="empty">koszyk jest pusty</h4>
                 </ul>
-                <div style="display: none" id="suma">Suma:</div><h6 id="sum-all-prices"></h6>
+                <div class="suma-display">
+                    <div style="display: none" id="suma"></div><h6 id="sum-all-prices"></h6>
+                </div>
                 <form action="stronalog.php" method="post">
                     <button class="checkout">Złóż zamówienie</button>
                 </form>
             </div>
         </header>
+
+        <!-- PRODUKTY -->
         <main>
             <section class="main-section">
-                <div class="product-container">  <!-- tak wiem strasznie duzo tych divów -->
+                <div class="slideshow-bestseller-box">
+                <div class="bestseller">Bestsellery</div>
+                <div class="mySlides fade">
+                <div class="product-container"> 
                     <div class="products">
                         <!-- produkt1-->
                         <div class="product">    
                             <div class="product-under">
                                 <figure class="product-image">
-                                    <!-- tu można dodac zdjecie-->
+                                    <img src="candle1.jpg" 
+                                    width="300" 
+                                    height="300"></img>
                                     <div class="product-over">
-                                        <!-- jak sie doda zdjecie to te przyciski powinny byc jakby na zdjeciu,
-                                        fajnie by bylo jak sie najedzie na zdjecie to sie pokazuje przycisk "dodaj do koszyka"-->
                                         <button
                                             class="btn btn-small addToCart"
                                             data-product-id="1"
@@ -87,9 +96,9 @@ session_start();
                                     </div>
                                 </figure>
                                 <div class="product-summary">
-                                    <h4 class="productName">Produkt 1</h4>
+                                    <h4 class="productName">Lavender Vanilla</h4>
                                     <h6 class="price">
-                                        <span class="priceValue">15</span>
+                                        <span class="priceValue">25</span>
                                     </h6>
                                 </div>
                             </div>
@@ -99,27 +108,128 @@ session_start();
                         <div class="product">
                             <div class="product-under">
                                 <figure class="product-image">
-                                    <!--zdjecie-->
+                                    <img src="candle5.jpg" 
+                                    width="300" 
+                                    height="300"></img>
                                     <div class="product-over">
                                         <button
                                             class="btn btn-small addToCart"
-                                            data-product-id="2"
+                                            data-product-id="5"
                                         >
                                             <i class="fas fa-cart-plus"></i>Dodaj do koszyka
                                         </button>
                                     </div>
                                 </figure>
                                 <div class="product-summary">
-                                    <h4 class="productName">Produkt 2</h4>
+                                    <h4 class="productName">Grow</h4>
                                     <h6 class="price">
-                                        <span class="priceValue">20</span>
+                                        <span class="priceValue">15</span>
+                                    </h6>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>   <!--  koniec class="mySlides fade"-->
+
+
+                <div class="mySlides fade">
+                <div class="product-container"> 
+                    <div class="products">
+                        <!-- produkt1-->
+                        <div class="product">
+                            <div class="product-under">
+                                <figure class="product-image">
+                                    <!--zdjecie-->
+                                    <img src="plant1.png" 
+                                    width="300" 
+                                    height="300"></img>
+                                    <div class="product-over">
+                                        <button
+                                            class="btn btn-small addToCart"
+                                            data-product-id="7"
+                                        >
+                                            <i class="fas fa-cart-plus"></i>Dodaj do koszyka
+                                        </button>
+                                    </div>
+                                </figure>
+                                <div class="product-summary">
+                                    <h4 class="productName">Monstera</h4>
+                                    <h6 class="price">
+                                        <span class="priceValue">50</span>
+                                    </h6>
+                                </div>
+                                 </div>
+                            </div>
+                        <!-- produkt2-->
+                        <div class="product">    
+                            <div class="product-under">
+                                <figure class="product-image">
+                                <img src="plant4.png" 
+                                    width="300" 
+                                    height="300"></img>
+                                    <div class="product-over">
+                                        <button
+                                            class="btn btn-small addToCart"
+                                            data-product-id="10"
+                                        >
+                                            <i class="fas fa-cart-plus"></i>Dodaj do koszyka
+                                        </button>
+                                    </div>
+                                </figure>
+                                <div class="product-summary">
+                                    <h4 class="productName">Fikus</h4>
+                                    <h6 class="price">
+                                        <span class="priceValue">10</span>
                                     </h6>
                                 </div>
                             </div>
                         </div>
+                        <!-- koniec produktu2-->
+                        </div>
                     </div>
+                    </div>   
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
                 </div>   
+                <br>
+
+                <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                
+                </div>
             </section>
+
+            <script> //obsługa slide show bestsellerów
+            let slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            }
+            </script>
+
             <div class="podsumowanie hide"> 
                 <div class="overlay"></div>
                 <div class="top">
@@ -128,10 +238,13 @@ session_start();
                 <ul id="podsumowanie">
                     <h4 class="empti">koszyk jest pusty</h4>
                 </ul>
-                <div style="display: none" id="suma">Suma:</div><h6 id="sum-all-prices"></h6>
+                <div class="suma-display">
+                    <div style="display: none" id="suma"></div><h6 id="sum-all-prices"></h6>
+                </div>
             </div>
         </main>
         <script src="script.js"></script>
         <script src="shopping-cart.js"></script>
+    </div>
     </body>
 </html>
