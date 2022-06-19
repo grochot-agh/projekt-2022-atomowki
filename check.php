@@ -9,7 +9,7 @@ $user_numer = filter_input(INPUT_POST, 'numer', FILTER_VALIDATE_INT);
 $user_ulica = filter_input(INPUT_POST, 'ulica');
 $user_numerdomu = filter_input(INPUT_POST, 'numerdomu');
 $user_kod = filter_input(INPUT_POST, 'kod');
-$user_wojewodztwo = filter_input(INPUT_POST, 'wojewodztwo');
+//$user_wojewodztwo = filter_input(INPUT_POST, 'wojewodztwo');
 $user_miasto = filter_input(INPUT_POST, 'miasto');
 
 //$user_nazwa =  item.querySelector('.productName').innerHTML;
@@ -104,17 +104,6 @@ else {
     }
 }
 
-if(empty($user_wojewodztwo)) {
-    $_SESSION['wojewodztwo_error'] = '<span style="color:red">Podaj województwo</span>';
-}
-else {
-    if(ctype_space($user_wojewodztwo)) {
-        $_SESSION['wojewodztwo_error'] = '<span style="color:red">Nieprawidłowe województwo</span>';
-    }
-    else {
-        $_SESSION['wojewodztwo'] = $user_wojewodztwo;
-    }
-}
 
 if(empty($user_miasto)) {
     $_SESSION['miasto_error'] = '<span style="color:red">Podaj miasto</span>';
@@ -128,17 +117,17 @@ else {
     }
 }
 
-if(empty($_SESSION['imie_error']) && empty($_SESSION['nazwisko_error']) && empty($_SESSION['email_error']) && empty($_SESSION['numer_error']) && empty($_SESSION['ulica_error']) && empty($_SESSION['numerdomu_error']) && empty($_SESSION['kod_error']) && empty($_SESSION['wojewodztwo_error']) && empty($_SESSION['miasto_error']) && isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['numer']) && isset($_POST['ulica']) && isset($_POST['numerdomu']) && isset($_POST['kod']) && isset($_POST['wojewodztwo']) && isset($_POST['miasto'])) {
+if(empty($_SESSION['imie_error']) && empty($_SESSION['nazwisko_error']) && empty($_SESSION['email_error']) && empty($_SESSION['numer_error']) && empty($_SESSION['ulica_error']) && empty($_SESSION['numerdomu_error']) && empty($_SESSION['kod_error'])  && empty($_SESSION['miasto_error']) && isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['numer']) && isset($_POST['ulica']) && isset($_POST['numerdomu']) && isset($_POST['kod']) && isset($_POST['miasto'])) {
     
     $link = mysqli_connect("mysql.agh.edu.pl:3306", "mpiwko", "Q5qYZ4aVsHgDACxH", "mpiwko");
 
-    $sql = "INSERT INTO orders(imie,nazwisko,email,numer,ulica,numerdomu,kod,wojewodztwo,miasto) VALUES(?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO orders(imie,nazwisko,email,numer,ulica,numerdomu,kod,miasto) VALUES(?,?,?,?,?,?,?,?)";
     //$sql1= "INSERT INTO products(nazwa,id,counts,price,basePrice) VALUES(?,?,?,?,?)";
 
     $stmt = $link->prepare($sql);
     //$stmt1 = $link->prepare($sql1);
 
-    $stmt->bind_param("sssssssss", $_POST['imie'], $_POST['nazwisko'], $_POST['email'], $_POST['numer'], $_POST['ulica'], $_POST['numerdomu'], $_POST['kod'], $_POST['wojewodztwo'], $_POST['miasto']);
+    $stmt->bind_param("ssssssss", $_POST['imie'], $_POST['nazwisko'], $_POST['email'], $_POST['numer'], $_POST['ulica'], $_POST['numerdomu'], $_POST['kod'], $_POST['miasto']);
     //$stmt1->bind_param("ssss", $_POST['imie'], $_POST['nazwisko'], $_POST['email'], $_POST['numer'], $_POST['ulica'], $_POST['numerdomu'], $_POST['kod'], $_POST['wojewodztwo'], $_POST['miasto']);
     //$stmt1->bind_param("sss", $_POST[''])
     $result = $stmt->execute();
