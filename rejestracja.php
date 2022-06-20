@@ -6,7 +6,7 @@ $link = mysqli_connect("mysql.agh.edu.pl:3306", "mpiwko", "Q5qYZ4aVsHgDACxH", "m
 
 if (isset($_POST['imienazwisko']) && isset($_POST['loginre']) && isset($_POST['haslore']) && is_string($_POST['imienazwisko']) && !empty($_POST['imienazwisko']) && !empty($_POST['loginre']) && !empty($_POST['haslore'])) {
     $login = $_POST['loginre'];
-    $haslo = hash(sha512,$_POST['haslore']);
+    $haslo = hash('sha512',$_POST['haslore']);
     $imienazwisko = $_POST['imienazwisko'];
     $link = mysqli_connect("mysql.agh.edu.pl:3306", "mpiwko", "Q5qYZ4aVsHgDACxH", "mpiwko");
     $sql = "SELECT * FROM  `users`  WHERE `login`='$login' ";

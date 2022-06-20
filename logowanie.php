@@ -7,7 +7,7 @@ if (isset($_POST['zaloguj'])) {
     if (isset($_POST['login']) && isset($_POST['haslo']) && !empty($_POST['login']) && !empty($_POST['haslo'])) {
  
         $login = $_POST['login']; //ustawiam zmienna ktoram pobiera zawartosc z wpisywanego pola
-        $haslo = hash(sha512, $_POST['haslo']); //ustawiam zmienna haslo
+        $haslo = hash('sha512', $_POST['haslo']); //ustawiam zmienna haslo
         //$_SESSION['imienazwisko'] = $;
         //$_SESSION['login'] = $login;
         //$_SESSION['haslo'] = $haslo;  
