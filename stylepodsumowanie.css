@@ -16,6 +16,11 @@ body
     box-sizing: border-box;
 }
 
+html {
+    background: rgb(229,229,229) !important;
+}
+
+
 .container {
 
     width: 100%;
