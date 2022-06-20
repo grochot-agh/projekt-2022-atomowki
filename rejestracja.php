@@ -6,7 +6,7 @@ $link = mysqli_connect("mysql.agh.edu.pl:3306", "mpiwko", "Q5qYZ4aVsHgDACxH", "m
 
 if (isset($_POST['imienazwisko']) && isset($_POST['loginre']) && isset($_POST['haslore']) && is_string($_POST['imienazwisko']) && !empty($_POST['imienazwisko']) && !empty($_POST['loginre']) && !empty($_POST['haslore'])) {
     $login = $_POST['loginre'];
-    $haslo = $_POST['haslore'];
+    $haslo = hash(sha512,$_POST['haslore']);
     $imienazwisko = $_POST['imienazwisko'];
     $link = mysqli_connect("mysql.agh.edu.pl:3306", "mpiwko", "Q5qYZ4aVsHgDACxH", "mpiwko");
     $sql = "SELECT * FROM  `users`  WHERE `login`='$login' ";
@@ -19,7 +19,7 @@ if (isset($_POST['imienazwisko']) && isset($_POST['loginre']) && isset($_POST['h
     else {
         $sql = "INSERT INTO users(imienazwisko,login,haslo) VALUES(?,?,?)";
         $stmt = $link->prepare($sql);
-        $stmt->bind_param("sss", $_POST['imienazwisko'], $_POST['loginre'], $_POST['haslore']);
+        $stmt->bind_param("sss", $imienazwisko, $login, $haslo);
         $result = $stmt->execute();
         if (!$result) {
             printf("Query failed: %s\n", mysqli_error($link));
