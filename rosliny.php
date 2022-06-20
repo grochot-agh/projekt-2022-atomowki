@@ -7,7 +7,7 @@ session_start();
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link type="text/css" href="styleheader.css" rel="stylesheet" />
+        <link type="text/css" href="styleheader1.css" rel="stylesheet" />
         <link type="text/css" href="styleprodukty.css" rel="stylesheet" />
         <!-- <link type="text/css" href="main.css" rel="stylesheet" /> -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
